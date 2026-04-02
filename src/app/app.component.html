@@ -1,0 +1,21 @@
+<div class="game-container">
+  <h1>Tic-Tac-Toe</h1>
+
+  <!-- Status Message -->
+  @if (game.winner()) {
+    <h2 class="winner">Winner: {{ game.winner() }}!</h2>
+  } @else {
+    <h2>Next Player: {{ game.currentPlayer() }}</h2>
+  }
+
+  <!-- The 3x3 Board -->
+  <div class="board">
+    @for (cell of game.board(); track $index) {
+      <button class="square" (click)="game.makeMove($index)">
+        {{ cell }}
+      </button>
+    }
+  </div>
+
+  <button class="reset-btn" (click)="game.resetGame()">Restart Game</button>
+</div>
